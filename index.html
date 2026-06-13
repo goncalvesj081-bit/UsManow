@@ -6,77 +6,46 @@
 <title>US MANOW</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap');
-  :root {
-    --bg:#0d0f14; --surface:#161a23; --card:#1c2130; --border:#252c3d;
-    --blue:#2a6df4; --blue-dim:#1a3a7a; --blue-glow:#2a6df433;
-    --white:#f0f4ff; --muted:#6b7a99;
-    --green:#22c55e; --red:#ef4444; --yellow:#eab308;
+  :root{
+    --bg:#0d0f14;--surface:#161a23;--card:#1c2130;--border:#252c3d;
+    --blue:#2a6df4;--blue-dim:#1a3a7a;--blue-glow:#2a6df433;
+    --white:#f0f4ff;--muted:#6b7a99;
+    --green:#22c55e;--red:#ef4444;--yellow:#eab308;
     --radius:8px;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;font-size:14px;min-height:100vh}
 
-  /* ── SPLASH (tela inicial) ── */
-  #splash {
-    position:fixed;inset:0;background:var(--bg);z-index:500;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .splash-box {
-    width:100%;max-width:400px;padding:0 24px;
-    display:flex;flex-direction:column;align-items:center;gap:0;
-  }
-  .splash-logo {
-    font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52px;
-    letter-spacing:4px;color:var(--white);margin-bottom:4px;
-  }
+  /* SPLASH */
+  #splash{position:fixed;inset:0;background:var(--bg);z-index:500;display:flex;align-items:center;justify-content:center}
+  .splash-box{width:100%;max-width:400px;padding:0 24px;display:flex;flex-direction:column;align-items:center}
+  .splash-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52px;letter-spacing:4px;margin-bottom:32px}
   .splash-logo span{color:var(--blue)}
-  .splash-sub{font-size:13px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:40px}
   .splash-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:32px;width:100%}
   .splash-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;margin-bottom:4px}
-  .splash-desc{font-size:12px;color:var(--muted);margin-bottom:24px}
-  .form-group{margin-bottom:14px}
-  .form-group label{display:block;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--muted);margin-bottom:5px;text-transform:uppercase}
-  .form-group input,.form-group select{width:100%;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);color:var(--white);font-family:'Inter',sans-serif;font-size:14px;padding:10px 12px;outline:none;transition:border-color .15s}
-  .form-group input:focus,.form-group select:focus{border-color:var(--blue)}
-  .form-group select option{background:var(--card)}
-  .btn-primary{width:100%;background:var(--blue);color:#fff;border:none;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;padding:11px;border-radius:var(--radius);cursor:pointer;transition:opacity .15s}
-  .btn-primary:hover{opacity:.85}.btn-primary:disabled{opacity:.5;cursor:not-allowed}
-  .btn-ghost{width:100%;background:none;color:var(--muted);border:1px solid var(--border);font-family:'Inter',sans-serif;font-size:13px;padding:10px;border-radius:var(--radius);cursor:pointer;margin-top:8px;transition:color .15s,border-color .15s}
-  .btn-ghost:hover{color:var(--white);border-color:var(--white)}
-  .btn-link{background:none;border:none;color:var(--blue);font-family:'Inter',sans-serif;font-size:13px;cursor:pointer;padding:0;text-decoration:underline}
+  .splash-desc{font-size:12px;color:var(--muted);margin-bottom:20px}
   .splash-switch{text-align:center;margin-top:16px;font-size:13px;color:var(--muted)}
-  .alert{padding:10px 14px;border-radius:var(--radius);font-size:13px;margin-bottom:14px;display:none}
-  .alert.error{background:#3a1a1a;color:#ff8080;border:1px solid #5a2020}
-  .alert.success{background:#1a3a20;color:#80ff99;border:1px solid #205a30}
-  .alert.info{background:#1a2a4a;color:#80aaff;border:1px solid #1a3a7a}
-  .alert.show{display:block}
 
-  /* ── PENDING SCREEN ── */
-  #pending-screen{
-    position:fixed;inset:0;background:var(--bg);z-index:400;
-    display:none;align-items:center;justify-content:center;
-  }
-  .pending-box{
-    background:var(--surface);border:1px solid var(--border);border-radius:12px;
-    padding:48px 40px;max-width:400px;width:100%;margin:24px;text-align:center;
-  }
+  /* PENDING */
+  #pending-screen{position:fixed;inset:0;background:var(--bg);z-index:400;display:none;align-items:center;justify-content:center}
+  .pending-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:48px 40px;max-width:400px;width:100%;margin:24px;text-align:center}
   .pending-icon{font-size:48px;margin-bottom:16px}
   .pending-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;letter-spacing:1px;margin-bottom:8px}
   .pending-text{font-size:13px;color:var(--muted);line-height:1.6}
 
-  /* ── APP ── */
+  /* APP */
   #app{display:none}
-  header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+  header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
   .logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;letter-spacing:2px;display:flex;align-items:center;gap:10px}
   .logo span{color:var(--blue)}
   .logo-badge{background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:1px}
-  nav{display:flex;gap:4px}
-  nav button{background:none;border:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:6px 14px;border-radius:var(--radius);cursor:pointer;transition:color .15s,background .15s}
+  nav{display:flex;gap:2px;flex-wrap:wrap}
+  nav button{background:none;border:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:6px 12px;border-radius:var(--radius);cursor:pointer;transition:color .15s,background .15s;white-space:nowrap}
   nav button:hover{color:var(--white);background:var(--card)}
   nav button.active{color:var(--blue);background:var(--blue-glow)}
-  .header-right{display:flex;align-items:center;gap:8px}
+  .header-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
   .user-chip{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:4px 12px 4px 6px;font-size:13px;font-weight:500}
-  .user-avatar{width:26px;height:26px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+  .user-avatar{width:26px;height:26px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
   .role-badge{font-size:10px;font-weight:700;letter-spacing:.5px;padding:1px 6px;border-radius:4px;background:var(--blue-dim);color:var(--blue)}
   .role-badge.sa{background:#1a3a2a;color:#22c55e}
   .role-badge.jogador{background:#2a1a4a;color:#aa80ff}
@@ -85,25 +54,55 @@
 
   main{max-width:1100px;margin:0 auto;padding:28px 20px}
   .page{display:none}.page.active{display:block}
+
+  /* FORMS */
+  .form-group{margin-bottom:14px}
+  .form-group label{display:block;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--muted);margin-bottom:5px;text-transform:uppercase}
+  .form-group input,.form-group select,.form-group textarea{width:100%;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);color:var(--white);font-family:'Inter',sans-serif;font-size:14px;padding:10px 12px;outline:none;transition:border-color .15s}
+  .form-group input:focus,.form-group select:focus{border-color:var(--blue)}
+  .form-group select option{background:var(--card)}
+  .btn-primary{width:100%;background:var(--blue);color:#fff;border:none;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;padding:11px;border-radius:var(--radius);cursor:pointer;transition:opacity .15s}
+  .btn-primary:hover{opacity:.85}.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+  .btn-ghost{width:100%;background:none;color:var(--muted);border:1px solid var(--border);font-family:'Inter',sans-serif;font-size:13px;padding:10px;border-radius:var(--radius);cursor:pointer;margin-top:8px;transition:color .15s,border-color .15s}
+  .btn-ghost:hover{color:var(--white);border-color:var(--white)}
+  .btn-link{background:none;border:none;color:var(--blue);font-family:'Inter',sans-serif;font-size:13px;cursor:pointer;padding:0;text-decoration:underline}
+  .btn-action{background:var(--blue);color:#fff;border:none;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:var(--radius);cursor:pointer;transition:opacity .15s}
+  .btn-action:hover{opacity:.85}
+  .btn-icon{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:6px 10px;border-radius:var(--radius);cursor:pointer;font-size:14px;transition:color .15s,border-color .15s}
+  .btn-icon:hover{color:var(--white)}.btn-icon.del:hover{color:var(--red);border-color:var(--red)}
+  .btn-approve{background:#1a3a2a;border:1px solid #205a30;color:#22c55e;padding:5px 12px;border-radius:var(--radius);cursor:pointer;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;transition:opacity .15s}
+  .btn-approve:hover{opacity:.8}
+
+  /* ALERTS */
+  .alert{padding:10px 14px;border-radius:var(--radius);font-size:13px;margin-bottom:14px;display:none}
+  .alert.error{background:#3a1a1a;color:#ff8080;border:1px solid #5a2020}
+  .alert.success{background:#1a3a20;color:#80ff99;border:1px solid #205a30}
+  .alert.show{display:block}
+
+  /* CARDS */
   .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
   .card-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
-  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:24px}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-bottom:24px}
   .stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;position:relative;overflow:hidden}
   .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue)}
   .stat-card.green::before{background:var(--green)}.stat-card.red::before{background:var(--red)}.stat-card.yellow::before{background:var(--yellow)}
   .stat-label{font-size:11px;font-weight:600;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
   .stat-value{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;line-height:1;color:var(--white)}
   .stat-sub{font-size:11px;color:var(--muted);margin-top:4px}
+
+  /* RESULT BAR */
   .result-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;gap:2px;margin:16px 0 6px}
   .rb-v{background:var(--green)}.rb-e{background:var(--yellow)}.rb-d{background:var(--red)}
   .result-legend{display:flex;gap:16px;font-size:11px;color:var(--muted)}
   .result-legend span{display:flex;align-items:center;gap:4px}
   .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+  /* TABLE */
   .table-wrap{overflow-x:auto}
   table{width:100%;border-collapse:collapse}
   thead tr{border-bottom:1px solid var(--border)}
-  th{font-size:11px;font-weight:600;letter-spacing:1px;color:var(--muted);text-transform:uppercase;text-align:left;padding:8px 12px}
-  td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:13px}
+  th{font-size:11px;font-weight:600;letter-spacing:1px;color:var(--muted);text-transform:uppercase;text-align:left;padding:8px 12px;white-space:nowrap}
+  td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle}
   tr:last-child td{border-bottom:none}
   tr:hover td{background:var(--surface)}
   .badge-tipo{font-size:10px;font-weight:700;letter-spacing:.5px;padding:2px 8px;border-radius:4px;white-space:nowrap}
@@ -113,6 +112,8 @@
   .tipo-copa{background:#3a2a1a;color:#ffb05b}
   .placar{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;white-space:nowrap}
   .placar.win{color:var(--green)}.placar.draw{color:var(--yellow)}.placar.loss{color:var(--red)}
+
+  /* ARTILHARIA */
   .art-list{display:flex;flex-direction:column;gap:8px}
   .art-row{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
   .art-pos{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--muted);width:28px;text-align:center}
@@ -121,30 +122,23 @@
   .art-nome{flex:1;font-weight:500}
   .art-bar-wrap{flex:2;display:flex;align-items:center;gap:8px}
   .art-bar{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
-  .art-bar-fill{height:100%;background:var(--blue);border-radius:2px;transition:width .5s}
+  .art-bar-fill{height:100%;background:var(--blue);border-radius:2px}
   .art-gols{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--white);width:36px;text-align:right}
 
-  /* PERFIL JOGADOR */
-  .profile-hero{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;display:flex;align-items:center;gap:20px;margin-bottom:20px}
-  .profile-avatar{width:64px;height:64px;background:var(--blue-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;color:var(--blue);flex-shrink:0}
-  .profile-name{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;letter-spacing:1px}
-  .profile-role{font-size:12px;color:var(--muted);margin-top:4px}
-  .profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
-
   /* MODAL */
-  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;align-items:center;justify-content:center}
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:300;align-items:center;justify-content:center;padding:16px}
   .modal-overlay.open{display:flex}
-  .modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:32px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto}
   .modal-title{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;letter-spacing:1px;margin-bottom:6px}
   .modal-sub{font-size:12px;color:var(--muted);margin-bottom:20px}
-  .divider{border:none;border-top:1px solid var(--border);margin:18px 0}
+  .divider{border:none;border-top:1px solid var(--border);margin:16px 0}
   .match-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .placar-inputs{display:flex;align-items:center;gap:10px}
   .placar-inputs input{width:60px;text-align:center;font-size:20px;font-weight:700}
   .placar-x{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--muted)}
   .player-check-list{display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto}
   .player-check-row{display:flex;align-items:center;gap:10px;padding:6px 10px;background:var(--surface);border:1px solid var(--border);border-radius:6px}
-  .player-check-row input[type=checkbox]{accent-color:var(--blue);width:16px;height:16px}
+  .player-check-row input[type=checkbox]{accent-color:var(--blue);width:16px;height:16px;flex-shrink:0}
   .player-check-row .pname{flex:1;font-size:13px}
   .player-check-row input[type=number]{width:52px;background:var(--card);border:1px solid var(--border);border-radius:4px;color:var(--white);font-size:13px;padding:3px 6px;text-align:center}
   .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
@@ -157,72 +151,106 @@
   .page-header{margin-bottom:24px}
   .page-header h1{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;letter-spacing:1px}
   .page-header p{color:var(--muted);font-size:13px;margin-top:4px}
-  .btn-action{background:var(--blue);color:#fff;border:none;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:8px 18px;border-radius:var(--radius);cursor:pointer;transition:opacity .15s}
-  .btn-action:hover{opacity:.85}
-  .btn-icon{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:6px 10px;border-radius:var(--radius);cursor:pointer;font-size:14px;transition:color .15s}
-  .btn-icon:hover{color:var(--white)}.btn-icon.del:hover{color:var(--red);border-color:var(--red)}
-  .btn-approve{background:#1a3a2a;border:1px solid #205a30;color:#22c55e;padding:5px 12px;border-radius:var(--radius);cursor:pointer;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;transition:opacity .15s}
-  .btn-approve:hover{opacity:.8}
   .tabs{display:flex;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:20px;width:fit-content;flex-wrap:wrap}
   .tab{background:none;border:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:7px 18px;border-radius:6px;cursor:pointer;transition:all .15s}
   .tab.active{background:var(--blue);color:#fff}
   .pending-badge{background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:4px}
-  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .chip{display:inline-flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:20px;font-size:11px;padding:3px 10px;color:var(--muted)}
   .role-select{background:var(--card);border:1px solid var(--border);border-radius:4px;color:var(--white);font-size:12px;padding:3px 6px}
+  .chip{display:inline-flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:20px;font-size:11px;padding:3px 10px;color:var(--muted)}
+
+  /* PERFIL / DESEMPENHO */
+  .profile-hero{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;align-items:center;gap:20px;margin-bottom:20px}
+  .profile-avatar{width:60px;height:60px;background:var(--blue-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:var(--blue);flex-shrink:0}
+  .profile-name{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;letter-spacing:1px}
+  .profile-role{font-size:12px;color:var(--muted);margin-top:4px}
+  .player-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;cursor:pointer;transition:border-color .15s;display:flex;align-items:center;gap:16px;margin-bottom:10px}
+  .player-card:hover{border-color:var(--blue)}
+  .player-card-avatar{width:42px;height:42px;background:var(--blue-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--blue);flex-shrink:0}
+  .player-card-info{flex:1;min-width:0}
+  .player-card-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:.5px}
+  .player-card-stats{display:flex;gap:14px;margin-top:4px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+  .player-detail-back{background:none;border:none;color:var(--blue);font-family:'Inter',sans-serif;font-size:13px;cursor:pointer;padding:0;margin-bottom:16px;display:flex;align-items:center;gap:4px}
+  .player-detail-back:hover{opacity:.8}
+  .month-bars{display:flex;align-items:flex-end;gap:6px;height:80px;margin-top:12px}
+  .month-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .month-bar{width:100%;background:var(--blue);border-radius:3px 3px 0 0;min-height:2px}
+  .month-bar-label{font-size:10px;color:var(--muted);white-space:nowrap}
+  .month-bar-val{font-size:11px;font-weight:700;color:var(--white)}
+
+  /* MISC */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
   .empty{text-align:center;padding:48px 24px;color:var(--muted)}
   .empty-icon{font-size:40px;margin-bottom:12px}
   .loader{display:flex;align-items:center;justify-content:center;padding:40px;color:var(--muted);gap:10px}
   .spinner{width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .6s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   .mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}
-  /* DESEMPENHO */
-  .player-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;cursor:pointer;transition:border-color .15s;display:flex;align-items:center;gap:16px;margin-bottom:10px}
-  .player-card:hover{border-color:var(--blue)}
-  .player-card-avatar{width:44px;height:44px;background:var(--blue-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-size:18px;font-weight:700;color:var(--blue);flex-shrink:0}
-  .player-card-info{flex:1}
-  .player-card-name{font-family:"Barlow Condensed",sans-serif;font-size:20px;font-weight:700;letter-spacing:.5px}
-  .player-card-stats{display:flex;gap:16px;margin-top:4px;font-size:12px;color:var(--muted)}
-  .player-card-stats span{display:flex;align-items:center;gap:4px}
-  .player-detail-back{background:none;border:none;color:var(--blue);font-family:"Inter",sans-serif;font-size:13px;cursor:pointer;padding:0;margin-bottom:16px;display:flex;align-items:center;gap:4px}
-  .player-detail-back:hover{opacity:.8}
-  .month-bars{display:flex;align-items:flex-end;gap:6px;height:80px;margin-top:12px}
-  .month-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
-  .month-bar{width:100%;background:var(--blue);border-radius:3px 3px 0 0;min-height:2px;transition:height .4s}
-  .month-bar-label{font-size:10px;color:var(--muted);white-space:nowrap}
-  .month-bar-val{font-size:11px;font-weight:700;color:var(--white)}
   .text-muted{color:var(--muted)}
-  @media(max-width:700px){.grid-2,.match-form-grid,.detail-grid,.profile-stats{grid-template-columns:1fr}}
-  @media(max-width:500px){nav button{font-size:11px;padding:5px 6px}.logo-badge{display:none}}
+  .td-actions{display:flex;gap:4px;align-items:center}
+
+  @media(max-width:700px){
+    .grid-2,.match-form-grid,.detail-grid{grid-template-columns:1fr}
+    .stat-grid{grid-template-columns:repeat(3,1fr)}
+    main{padding:16px 12px}
+  }
+  @media(max-width:540px){
+    header{padding:0 12px;height:auto;flex-wrap:wrap;gap:6px;padding-top:8px;padding-bottom:8px}
+    .logo{font-size:18px}
+    .logo-badge{display:none}
+    nav{order:3;width:100%;overflow-x:auto;padding-bottom:4px;gap:2px;flex-wrap:nowrap}
+    nav::-webkit-scrollbar{display:none}
+    nav button{font-size:12px;padding:5px 10px;white-space:nowrap;flex-shrink:0}
+    .header-right{gap:6px}
+    #user-nome{display:none}
+    .stat-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .stat-value{font-size:28px}
+    th,td{padding:6px 8px;font-size:12px}
+    .placar{font-size:15px}
+    .art-bar-wrap{display:none}
+    .card{padding:14px}
+    .player-card{padding:12px 14px;gap:12px}
+    .player-card-stats{gap:8px;font-size:11px}
+    .profile-hero{padding:16px;gap:12px}
+    .profile-name{font-size:22px}
+    .profile-avatar{width:48px;height:48px;font-size:20px}
+    .modal{padding:20px}
+    .splash-logo{font-size:40px}
+    .splash-card{padding:24px 20px}
+    .pending-box{padding:32px 24px}
+    .month-bars{height:60px}
+    .month-bar-val{font-size:10px}
+    .result-legend{gap:10px;font-size:10px}
+    .badge-tipo{font-size:9px;padding:2px 5px}
+    .user-chip{padding:3px 8px 3px 4px}
+    .user-avatar{width:22px;height:22px;font-size:10px}
+  }
 </style>
 </head>
 <body>
 
-<!-- ══ SPLASH ══ -->
+<!-- SPLASH -->
 <div id="splash">
   <div class="splash-box">
     <div class="splash-logo">US <span>MANOW</span></div>
     <div class="splash-card">
-      <!-- VIEW: login -->
       <div id="view-login">
         <div class="splash-title">Entrar</div>
         <div class="splash-desc">Acesse sua conta ou entre como convidado</div>
         <div class="alert error" id="login-error"></div>
-        <div class="form-group"><label>Email</label><input type="email" id="login-email" placeholder="seu@email.com"/></div>
-        <div class="form-group"><label>Senha</label><input type="password" id="login-senha" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+        <div class="form-group"><label>Email</label><input type="email" id="login-email" placeholder="seu@email.com" autocomplete="email"/></div>
+        <div class="form-group"><label>Senha</label><input type="password" id="login-senha" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/></div>
         <button class="btn-primary" id="btn-login" onclick="doLogin()">Entrar</button>
         <button class="btn-ghost" onclick="enterGuest()">Entrar como convidado</button>
         <div class="splash-switch">Não tem conta? <button class="btn-link" onclick="showView('view-register')">Criar conta</button></div>
       </div>
-      <!-- VIEW: register -->
       <div id="view-register" style="display:none">
         <div class="splash-title">Criar conta</div>
         <div class="splash-desc">Sua conta ficará pendente até ser aprovada</div>
         <div class="alert error" id="register-error"></div>
         <div class="alert success" id="register-success"></div>
-        <div class="form-group"><label>Nome</label><input type="text" id="reg-nome" placeholder="Seu nome completo"/></div>
-        <div class="form-group"><label>Email</label><input type="email" id="reg-email" placeholder="seu@email.com"/></div>
-        <div class="form-group"><label>Senha</label><input type="password" id="reg-senha" placeholder="Mínimo 6 caracteres"/></div>
+        <div class="form-group"><label>Nome</label><input type="text" id="reg-nome" placeholder="Seu nome completo" autocomplete="name"/></div>
+        <div class="form-group"><label>Email</label><input type="email" id="reg-email" placeholder="seu@email.com" autocomplete="email"/></div>
+        <div class="form-group"><label>Senha</label><input type="password" id="reg-senha" placeholder="Mínimo 6 caracteres" autocomplete="new-password"/></div>
         <button class="btn-primary" id="btn-register" onclick="doRegister()">Criar conta</button>
         <div class="splash-switch">Já tem conta? <button class="btn-link" onclick="showView('view-login')">Entrar</button></div>
       </div>
@@ -230,17 +258,17 @@
   </div>
 </div>
 
-<!-- ══ PENDENTE ══ -->
+<!-- PENDENTE -->
 <div id="pending-screen">
   <div class="pending-box">
     <div class="pending-icon">⏳</div>
     <div class="pending-title">Aguardando aprovação</div>
-    <div class="pending-text">Sua conta foi criada com sucesso!<br>Um administrador irá aprová-la em breve.<br><br>Você receberá acesso assim que for aprovado.</div>
+    <div class="pending-text">Sua conta foi criada!<br>Um administrador irá aprová-la em breve.</div>
     <button class="btn-ghost" style="margin-top:24px;width:auto;padding:8px 24px" onclick="logout()">Sair</button>
   </div>
 </div>
 
-<!-- ══ APP ══ -->
+<!-- APP -->
 <div id="app">
   <header>
     <div class="logo">US <span>MANOW</span> <span class="logo-badge">2024</span></div>
@@ -248,9 +276,9 @@
       <button class="active" onclick="showPage('dashboard')">Dashboard</button>
       <button onclick="showPage('jogos')">Jogos</button>
       <button onclick="showPage('artilharia')">Artilharia</button>
-      <button id="nav-perfil" onclick="showPage('perfil')" style="display:none">Meu Perfil</button>
-      <button id="nav-desempenho" onclick="showPage('desempenho')" style="display:none">Desempenho</button>
-      <button id="nav-admin" onclick="showPage('admin')" style="display:none">Admin</button>
+      <button id="nav-perfil"      onclick="showPage('perfil')"      style="display:none">Meu Perfil</button>
+      <button id="nav-desempenho"  onclick="showPage('desempenho')"  style="display:none">Desempenho</button>
+      <button id="nav-admin"       onclick="showPage('admin')"       style="display:none">Admin</button>
     </nav>
     <div class="header-right">
       <div class="user-chip" id="user-chip" style="display:none">
@@ -261,7 +289,6 @@
       <button class="btn-logout" onclick="logout()">Sair</button>
     </div>
   </header>
-
   <main>
     <!-- DASHBOARD -->
     <div class="page active" id="page-dashboard">
@@ -273,36 +300,30 @@
       </div>
       <div class="card mt24"><div class="card-title">Últimos Jogos</div><div class="table-wrap mt8" id="ultimos-jogos"></div></div>
     </div>
-
     <!-- JOGOS -->
     <div class="page" id="page-jogos">
       <div class="section-header">
         <div class="page-header" style="margin:0"><h1>Jogos</h1><p id="jogos-count" class="text-muted" style="margin-top:4px"></p></div>
         <select id="filter-tipo" onchange="renderJogos()" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);color:var(--white);padding:7px 10px;font-size:13px;outline:none">
-          <option value="">Todos os tipos</option>
-          <option>Amistoso</option><option>Festival</option><option>Campeonato</option><option>Copa</option>
+          <option value="">Todos</option><option>Amistoso</option><option>Festival</option><option>Campeonato</option><option>Copa</option>
         </select>
       </div>
       <div class="card"><div class="table-wrap" id="jogos-table"></div></div>
     </div>
-
     <!-- ARTILHARIA -->
     <div class="page" id="page-artilharia">
       <div class="page-header"><h1>Artilharia</h1><p>Gols marcados por jogador em 2024</p></div>
       <div class="art-list" id="art-list"><div class="loader"><div class="spinner"></div> Carregando...</div></div>
     </div>
-
-    <!-- PERFIL JOGADOR -->
+    <!-- PERFIL -->
     <div class="page" id="page-perfil">
       <div id="perfil-content"><div class="loader"><div class="spinner"></div> Carregando...</div></div>
     </div>
-
     <!-- DESEMPENHO -->
     <div class="page" id="page-desempenho">
       <div class="page-header"><h1>Desempenho</h1><p>Estatísticas individuais dos jogadores</p></div>
       <div id="desempenho-lista"></div>
     </div>
-
     <!-- ADMIN -->
     <div class="page" id="page-admin">
       <div class="page-header"><h1>Administração</h1></div>
@@ -340,10 +361,10 @@
     </div>
     <div class="form-group"><label>Descrição (opcional)</label><input type="text" id="jogo-descricao" placeholder="ex: Copa Peladeiros / Semifinal"/></div>
     <div class="form-group"><label>Adversário</label><input type="text" id="jogo-adversario" placeholder="Nome do time adversário"/></div>
-    <div class="form-group"><label>Placar</label>
+    <div class="form-group"><label>Placar — US MANOW × Adversário</label>
       <div class="placar-inputs">
         <input type="number" id="jogo-gols-nos" min="0" value="0"/>
-        <span class="placar-x">X</span>
+        <span class="placar-x">×</span>
         <input type="number" id="jogo-gols-adv" min="0" value="0"/>
       </div>
     </div>
@@ -360,7 +381,7 @@
 
 <!-- MODAL JOGADOR -->
 <div class="modal-overlay" id="jogador-modal">
-  <div class="modal" style="max-width:380px">
+  <div class="modal" style="max-width:360px">
     <div class="modal-title">Jogador</div>
     <hr class="divider"/>
     <div class="form-group"><label>Nome</label><input type="text" id="jogador-nome" placeholder="Nome do jogador"/></div>
@@ -379,13 +400,13 @@
         <div class="modal-title" id="detalhe-titulo"></div>
         <div style="font-size:12px;color:var(--muted)" id="detalhe-sub"></div>
       </div>
-      <button class="btn-icon" onclick="closeModal('detalhe-modal')" style="font-size:18px">✕</button>
+      <button class="btn-icon" onclick="closeModal('detalhe-modal')" style="font-size:18px;flex-shrink:0">✕</button>
     </div>
     <div id="detalhe-content"></div>
   </div>
 </div>
 
-<!-- MODAL APROVAR USUARIO -->
+<!-- MODAL APROVAR -->
 <div class="modal-overlay" id="aprovar-modal">
   <div class="modal" style="max-width:400px">
     <div class="modal-title">Aprovar usuário</div>
@@ -399,11 +420,9 @@
         <option value="super_admin">Super Admin — acesso total</option>
       </select>
     </div>
-    <div class="form-group" id="aprovar-player-group">
-      <label>Vincular ao jogador</label>
-      <select id="aprovar-player">
-        <option value="">— Não vincular —</option>
-      </select>
+    <div class="form-group">
+      <label>Vincular ao jogador (opcional)</label>
+      <select id="aprovar-player"><option value="">— Não vincular —</option></select>
     </div>
     <div style="display:flex;gap:8px">
       <button class="btn-approve" style="flex:1;padding:10px" onclick="confirmarAprovacao()">✅ Aprovar</button>
@@ -414,163 +433,193 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+// ── CONFIG ───────────────────────────────────────────────
 const SUPABASE_URL  = 'https://guzaqqctnxgtfscyujvf.supabase.co';
 const SUPABASE_ANON = 'sb_publishable_vWgVyxWghHePaXpJ5ynpZw_fEL-BQX5';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
+// ── CACHE ────────────────────────────────────────────────
+const cache = {
+  matches: null, players: null, goals: null, cards: null, lineup: null,
+  clear(keys) { (keys||Object.keys(this)).forEach(k=>{ if(typeof this[k]!=='function') this[k]=null; }); }
+};
+
 // ── STATE ────────────────────────────────────────────────
 let currentUser = null, currentRole = null, currentProfile = null;
-let allMatches = [], allPlayers = [];
-let editingJogoId = null, editingJogadorId = null;
-let aprovandoUserId = null;
+let editingJogoId = null, editingJogadorId = null, aprovandoUserId = null;
+
+// ── HELPERS ──────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+function openModal(id)  { $(id).classList.add('open'); }
+function closeModal(id) { $(id).classList.remove('open'); }
+function showAlert(id, msg, show) { const el=$(id); if(!el) return; el.textContent=msg; el.classList.toggle('show',show); }
+function fmtDate(d) { return new Date(d+'T12:00:00').toLocaleDateString('pt-BR'); }
+function resultado(m) { return m.gols_nos>m.gols_adv?'win':m.gols_nos===m.gols_adv?'draw':'loss'; }
+function tipoCss(t) { return 'tipo-'+t.toLowerCase().split(' ')[0]; }
+function emptyState(icon,txt) { return `<div class="empty"><div class="empty-icon">${icon}</div><div class="empty-text">${txt}</div></div>`; }
+function loader() { return '<div class="loader"><div class="spinner"></div> Carregando...</div>'; }
+
+document.querySelectorAll('.modal-overlay').forEach(o=>{
+  o.addEventListener('click', e=>{ if(e.target===o) o.classList.remove('open'); });
+});
+
+// ── FETCH COM CACHE ───────────────────────────────────────
+async function getMatches(force=false) {
+  if(!force && cache.matches) return cache.matches;
+  const { data } = await sb.from('matches').select('*, opponents(nome)').order('data',{ascending:false});
+  cache.matches = data||[];
+  return cache.matches;
+}
+async function getPlayers(force=false) {
+  if(!force && cache.players) return cache.players;
+  const { data } = await sb.from('players').select('*').order('nome');
+  cache.players = data||[];
+  return cache.players;
+}
+async function getAllGoals(force=false) {
+  if(!force && cache.goals) return cache.goals;
+  const { data } = await sb.from('match_goals').select('*');
+  cache.goals = data||[];
+  return cache.goals;
+}
+async function getAllCards(force=false) {
+  if(!force && cache.cards) return cache.cards;
+  const { data } = await sb.from('match_cards').select('*');
+  cache.cards = data||[];
+  return cache.cards;
+}
+async function getAllLineup(force=false) {
+  if(!force && cache.lineup) return cache.lineup;
+  const { data } = await sb.from('match_lineup').select('*');
+  cache.lineup = data||[];
+  return cache.lineup;
+}
 
 // ── INIT ─────────────────────────────────────────────────
 async function init() {
   const { data: { session } } = await sb.auth.getSession();
-  if (session) {
-    await handleSession(session.user);
-  }
-  // Se não logado, splash fica visível
+  if (session) await handleSession(session.user);
 }
 
 async function handleSession(user) {
   currentUser = user;
   const { data: p } = await sb.from('profiles').select('*').eq('user_id', user.id).single();
-
-  if (!p) {
-    // Tem auth mas sem profile (raro) — trata como pendente
-    showPending(); return;
-  }
-
+  if (!p || p.status === 'pendente') { showPending(); return; }
   currentProfile = p;
   currentRole = p.role;
-
-  if (p.status === 'pendente') { showPending(); return; }
-
-  // Aprovado — mostra o app
   showApp(p);
 }
 
 function showPending() {
-  document.getElementById('splash').style.display = 'none';
-  document.getElementById('pending-screen').style.display = 'flex';
+  $('splash').style.display = 'none';
+  $('pending-screen').style.display = 'flex';
 }
 
 function showApp(p) {
-  document.getElementById('splash').style.display = 'none';
-  document.getElementById('pending-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-
-  // Header
+  $('splash').style.display = 'none';
+  $('pending-screen').style.display = 'none';
+  $('app').style.display = 'block';
   if (p.role !== 'guest') {
-    document.getElementById('user-chip').style.display = 'flex';
-    document.getElementById('user-nome').textContent = p.nome;
-    document.getElementById('user-avatar').textContent = p.nome[0].toUpperCase();
-    const rb = document.getElementById('user-role-badge');
-    if (p.role === 'super_admin')    { rb.textContent='ADMIN'; rb.classList.add('sa'); }
-    else if (p.role === 'diretor')   { rb.textContent='DIRETOR'; }
-    else if (p.role === 'jogador')   { rb.textContent='JOGADOR'; rb.classList.add('jogador'); }
+    $('user-chip').style.display = 'flex';
+    $('user-nome').textContent = p.nome;
+    $('user-avatar').textContent = p.nome[0].toUpperCase();
+    const rb = $('user-role-badge');
+    if (p.role==='super_admin')  { rb.textContent='ADMIN'; rb.classList.add('sa'); }
+    else if (p.role==='diretor') { rb.textContent='DIRETOR'; }
+    else                          { rb.textContent='JOGADOR'; rb.classList.add('jogador'); }
   }
-
-  if (p.player_id) document.getElementById('nav-perfil').style.display = '';
-  if (p.role === 'diretor' || p.role === 'super_admin') document.getElementById('nav-admin').style.display = '';
-  if (p.role === 'diretor' || p.role === 'super_admin') document.getElementById('nav-desempenho').style.display = '';
-
-  loadDashboard();
-  loadJogos();
-  loadArtilharia();
-  if (p.role === 'super_admin') { document.getElementById('tab-usuarios').style.display = ''; checkPending(); }
+  if (p.player_id)                                          $('nav-perfil').style.display='';
+  if (p.role==='diretor'||p.role==='super_admin')           $('nav-desempenho').style.display='';
+  if (p.role==='diretor'||p.role==='super_admin')           $('nav-admin').style.display='';
+  if (p.role==='super_admin') { $('tab-usuarios').style.display=''; checkPending(); }
+  loadPublicData();
 }
 
-// ── SPLASH VIEWS ─────────────────────────────────────────
-function showView(id) {
-  ['view-login','view-register'].forEach(v => document.getElementById(v).style.display = v===id?'':'none');
-}
-
-async function enterGuest() {
-  // Mostra app sem login
-  currentUser = null; currentRole = 'guest'; currentProfile = { nome:'Convidado', role:'guest' };
-  document.getElementById('splash').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  loadDashboard(); loadJogos(); loadArtilharia();
-}
-
-async function doLogin() {
-  const btn = document.getElementById('btn-login');
-  btn.disabled=true; btn.textContent='Entrando...';
-  showAlert('login-error','',false);
-  const { data, error } = await sb.auth.signInWithPassword({
-    email: document.getElementById('login-email').value,
-    password: document.getElementById('login-senha').value
-  });
-  if (error) { showAlert('login-error','Email ou senha incorretos.',true); btn.disabled=false; btn.textContent='Entrar'; return; }
-  await handleSession(data.user);
-  btn.disabled=false; btn.textContent='Entrar';
-}
-
-async function doRegister() {
-  const btn = document.getElementById('btn-register');
-  btn.disabled=true; btn.textContent='Criando...';
-  showAlert('register-error','',false);
-  showAlert('register-success','',false);
-  const nome  = document.getElementById('reg-nome').value.trim();
-  const email = document.getElementById('reg-email').value.trim();
-  const senha = document.getElementById('reg-senha').value;
-  if (!nome||!email||!senha) { showAlert('register-error','Preencha todos os campos.',true); btn.disabled=false; btn.textContent='Criar conta'; return; }
-  if (senha.length < 6)      { showAlert('register-error','Senha deve ter pelo menos 6 caracteres.',true); btn.disabled=false; btn.textContent='Criar conta'; return; }
-
-  const { data, error } = await sb.auth.signUp({
-    email, password: senha,
-    options: { data: { nome } }
-  });
-  if (error) { showAlert('register-error', error.message, true); btn.disabled=false; btn.textContent='Criar conta'; return; }
-  // Profile criado automaticamente pelo trigger no banco
-
-  showAlert('register-success','Conta criada! Aguarde a aprovação de um administrador.',true);
-  document.getElementById('reg-nome').value='';
-  document.getElementById('reg-email').value='';
-  document.getElementById('reg-senha').value='';
-  btn.disabled=false; btn.textContent='Criar conta';
+async function loadPublicData() {
+  await Promise.all([getMatches(true), getAllGoals(true), getAllCards(true), getAllLineup(true)]);
+  renderDashboard();
+  renderJogos();
+  renderArtilharia();
 }
 
 async function logout() {
   await sb.auth.signOut();
   currentUser=null; currentRole=null; currentProfile=null;
-  document.getElementById('app').style.display='none';
-  document.getElementById('pending-screen').style.display='none';
-  document.getElementById('splash').style.display='flex';
+  cache.clear();
+  $('app').style.display='none';
+  $('pending-screen').style.display='none';
+  $('splash').style.display='flex';
   showView('view-login');
+}
+
+// ── SPLASH ────────────────────────────────────────────────
+function showView(id) {
+  ['view-login','view-register'].forEach(v=>$(v).style.display=v===id?'':'none');
+}
+
+async function enterGuest() {
+  currentUser=null; currentRole='guest'; currentProfile={nome:'Convidado',role:'guest'};
+  $('splash').style.display='none';
+  $('app').style.display='block';
+  loadPublicData();
+}
+
+async function doLogin() {
+  const btn=$('btn-login');
+  btn.disabled=true; btn.textContent='Entrando...';
+  showAlert('login-error','',false);
+  const { data, error } = await sb.auth.signInWithPassword({
+    email: $('login-email').value.trim(),
+    password: $('login-senha').value
+  });
+  btn.disabled=false; btn.textContent='Entrar';
+  if (error) { showAlert('login-error','Email ou senha incorretos.',true); return; }
+  await handleSession(data.user);
+}
+
+async function doRegister() {
+  const btn=$('btn-register');
+  btn.disabled=true; btn.textContent='Criando...';
+  showAlert('register-error','',false);
+  showAlert('register-success','',false);
+  const nome=$('reg-nome').value.trim(), email=$('reg-email').value.trim(), senha=$('reg-senha').value;
+  if (!nome||!email||!senha) { showAlert('register-error','Preencha todos os campos.',true); btn.disabled=false; btn.textContent='Criar conta'; return; }
+  if (senha.length<6) { showAlert('register-error','Senha deve ter pelo menos 6 caracteres.',true); btn.disabled=false; btn.textContent='Criar conta'; return; }
+  const { error } = await sb.auth.signUp({ email, password: senha, options:{data:{nome}} });
+  btn.disabled=false; btn.textContent='Criar conta';
+  if (error) { showAlert('register-error', error.message, true); return; }
+  showAlert('register-success','Conta criada! Aguarde a aprovação de um administrador.',true);
+  $('reg-nome').value=''; $('reg-email').value=''; $('reg-senha').value='';
 }
 
 // ── NAV ──────────────────────────────────────────────────
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
+  $('page-'+name).classList.add('active');
   document.querySelector(`nav button[onclick="showPage('${name}')"]`)?.classList.add('active');
-  if (name==='admin')  loadAdmin();
-  if (name==='desempenho') loadDesempenho();
-  if (name==='perfil') loadPerfil();
+  if (name==='admin')       loadAdmin();
+  if (name==='desempenho')  renderDesempenho();
+  if (name==='perfil')      renderPerfil();
 }
 
 function showAdminTab(tab, btn) {
-  ['jogos','jogadores','usuarios'].forEach(t=>document.getElementById('admin-'+t).style.display=t===tab?'':'none');
+  ['jogos','jogadores','usuarios'].forEach(t=>$('admin-'+t).style.display=t===tab?'':'none');
   document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  if (tab==='jogos')     loadAdminJogos();
-  if (tab==='jogadores') loadAdminJogadores();
+  if (tab==='jogos')     renderAdminJogos();
+  if (tab==='jogadores') renderAdminJogadores();
   if (tab==='usuarios')  loadAdminUsuarios();
 }
 
 // ── DASHBOARD ────────────────────────────────────────────
-async function loadDashboard() {
-  const { data } = await sb.from('matches').select('*, opponents(nome)').order('data',{ascending:false});
-  allMatches = data||[];
-  const total=allMatches.length, v=allMatches.filter(m=>m.gols_nos>m.gols_adv).length,
-        e=allMatches.filter(m=>m.gols_nos===m.gols_adv).length, d=allMatches.filter(m=>m.gols_nos<m.gols_adv).length,
-        gf=allMatches.reduce((s,m)=>s+m.gols_nos,0), gc=allMatches.reduce((s,m)=>s+m.gols_adv,0),
+function renderDashboard() {
+  const matches = cache.matches||[];
+  const total=matches.length, v=matches.filter(m=>m.gols_nos>m.gols_adv).length,
+        e=matches.filter(m=>m.gols_nos===m.gols_adv).length, d=matches.filter(m=>m.gols_nos<m.gols_adv).length,
+        gf=matches.reduce((s,m)=>s+m.gols_nos,0), gc=matches.reduce((s,m)=>s+m.gols_adv,0),
         apr=total?((v+e*.5)/total*100).toFixed(0):0;
-  document.getElementById('stat-grid').innerHTML=`
+  $('stat-grid').innerHTML=`
     <div class="stat-card green"><div class="stat-label">Vitórias</div><div class="stat-value">${v}</div><div class="stat-sub">de ${total} jogos</div></div>
     <div class="stat-card yellow"><div class="stat-label">Empates</div><div class="stat-value">${e}</div></div>
     <div class="stat-card red"><div class="stat-label">Derrotas</div><div class="stat-value">${d}</div></div>
@@ -578,7 +627,7 @@ async function loadDashboard() {
     <div class="stat-card"><div class="stat-label">Gols Sofridos</div><div class="stat-value">${gc}</div></div>
     <div class="stat-card"><div class="stat-label">Aproveitamento</div><div class="stat-value">${apr}<small style="font-size:18px">%</small></div></div>`;
   const vw=total?(v/total*100).toFixed(1):0, ew=total?(e/total*100).toFixed(1):0, dw=total?(d/total*100).toFixed(1):0;
-  document.getElementById('result-bar-container').innerHTML=`
+  $('result-bar-container').innerHTML=`
     <div class="result-bar"><div class="rb-v" style="width:${vw}%"></div><div class="rb-e" style="width:${ew}%"></div><div class="rb-d" style="width:${dw}%"></div></div>
     <div class="result-legend">
       <span><i class="dot" style="background:var(--green)"></i>${v}V (${vw}%)</span>
@@ -586,81 +635,109 @@ async function loadDashboard() {
       <span><i class="dot" style="background:var(--red)"></i>${d}D (${dw}%)</span>
     </div>`;
   const saldo=gf-gc;
-  document.getElementById('gols-container').innerHTML=`
+  $('gols-container').innerHTML=`
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:${saldo>=0?'var(--green)':'var(--red)'}">${saldo>=0?'+':''}${saldo}</div>
     <div style="font-size:12px;color:var(--muted);margin-top:4px">${gf} feitos · ${gc} sofridos</div>`;
-  document.getElementById('ultimos-jogos').innerHTML=renderMatchTable(allMatches.slice(0,5));
+  $('ultimos-jogos').innerHTML = matchTable(matches.slice(0,5));
 }
 
 // ── JOGOS ────────────────────────────────────────────────
-async function loadJogos() {
-  const { data } = await sb.from('matches').select('*, opponents(nome)').order('data',{ascending:false});
-  allMatches=data||[];
-  renderJogos();
-}
-
 function renderJogos() {
-  const tipo=document.getElementById('filter-tipo')?.value||'';
-  const filtered=tipo?allMatches.filter(m=>m.tipo===tipo):allMatches;
-  const el=document.getElementById('jogos-count'); if(el) el.textContent=`${filtered.length} jogos`;
-  const el2=document.getElementById('jogos-table'); if(el2) el2.innerHTML=renderMatchTable(filtered);
+  const tipo=$('filter-tipo')?.value||'';
+  const filtered = tipo ? (cache.matches||[]).filter(m=>m.tipo===tipo) : (cache.matches||[]);
+  const el=$('jogos-count'); if(el) el.textContent=`${filtered.length} jogos`;
+  const el2=$('jogos-table'); if(el2) el2.innerHTML=matchTable(filtered);
 }
 
-function renderMatchTable(matches) {
-  if(!matches.length) return '<div class="empty"><div class="empty-icon">⚽</div><div class="empty-text">Nenhum jogo encontrado</div></div>';
+function matchTable(matches) {
+  if(!matches.length) return emptyState('⚽','Nenhum jogo encontrado');
   return `<table><thead><tr><th>Data</th><th>Tipo</th><th>Adversário</th><th>Placar</th><th></th></tr></thead><tbody>
-    ${matches.map(m=>{
-      const res=m.gols_nos>m.gols_adv?'win':m.gols_nos===m.gols_adv?'draw':'loss';
-      const tc='tipo-'+m.tipo.toLowerCase().split(' ')[0];
-      const dt=new Date(m.data+'T12:00:00').toLocaleDateString('pt-BR');
-      return `<tr>
-        <td style="color:var(--muted);font-size:12px">${dt}</td>
-        <td><span class="badge-tipo ${tc}">${m.tipo}</span></td>
-        <td><strong>${m.opponents?.nome||'—'}</strong>${m.descricao?`<br><span style="font-size:11px;color:var(--muted)">${m.descricao}</span>`:''}</td>
-        <td><span class="placar ${res}">${m.gols_nos} × ${m.gols_adv}</span></td>
-        <td><button class="btn-icon" onclick="openDetalhe('${m.id}')">👁</button></td>
-      </tr>`;
-    }).join('')}
+    ${matches.map(m=>`<tr>
+      <td style="color:var(--muted);font-size:12px">${fmtDate(m.data)}</td>
+      <td><span class="badge-tipo ${tipoCss(m.tipo)}">${m.tipo}</span></td>
+      <td><strong>${m.opponents?.nome||'—'}</strong>${m.descricao?`<br><span style="font-size:11px;color:var(--muted)">${m.descricao}</span>`:''}</td>
+      <td><span class="placar ${resultado(m)}">${m.gols_nos} × ${m.gols_adv}</span></td>
+      <td><button class="btn-icon" onclick="openDetalhe('${m.id}')">👁</button></td>
+    </tr>`).join('')}
   </tbody></table>`;
 }
 
 // ── ARTILHARIA ───────────────────────────────────────────
-async function loadArtilharia() {
-  const { data } = await sb.from('match_goals').select('quantidade, players(nome)');
+function renderArtilharia() {
+  const goals = cache.goals||[];
+  const players = cache.players||[];
   const totals={};
-  (data||[]).forEach(g=>{ const n=g.players?.nome||'?'; totals[n]=(totals[n]||0)+g.quantidade; });
-  const sorted=Object.entries(totals).sort((a,b)=>b[1]-a[1]);
-  const max=sorted[0]?.[1]||1;
-  document.getElementById('art-list').innerHTML=sorted.map(([nome,gols],i)=>`
-    <div class="art-row">
+  goals.forEach(g=>{ totals[g.player_id]=(totals[g.player_id]||0)+g.quantidade; });
+  const sorted = Object.entries(totals).sort((a,b)=>b[1]-a[1]);
+  const max = sorted[0]?.[1]||1;
+  $('art-list').innerHTML = sorted.map(([pid,gols],i)=>{
+    const p = players.find(x=>x.id===pid);
+    const nome = p?.nome||'?';
+    return `<div class="art-row">
       <div class="art-pos ${i<3?'top':''}">${i+1}º</div>
       <div class="art-avatar">${nome[0]}</div>
       <div class="art-nome">${nome}</div>
       <div class="art-bar-wrap"><div class="art-bar"><div class="art-bar-fill" style="width:${(gols/max*100).toFixed(0)}%"></div></div></div>
       <div class="art-gols">${gols}</div>
-    </div>`).join('')||'<div class="empty"><div class="empty-icon">⚽</div><div class="empty-text">Sem dados</div></div>';
+    </div>`;
+  }).join('') || emptyState('⚽','Sem dados');
 }
 
+// ── DETALHE JOGO ─────────────────────────────────────────
+async function openDetalhe(id) {
+  const m=(cache.matches||[]).find(x=>x.id===id); if(!m) return;
+  const res=resultado(m);
+  const players=cache.players||[];
+  document.getElementById('detalhe-titulo').innerHTML=
+    `US MANOW <span class="placar ${res}" style="font-size:28px"> ${m.gols_nos} × ${m.gols_adv} </span> ${m.opponents?.nome}`;
+  $('detalhe-sub').textContent=`${fmtDate(m.data)} · ${m.tipo}${m.descricao?' · '+m.descricao:''}`;
 
-// ── DESEMPENHO ───────────────────────────────────────────
-async function loadDesempenho() {
-  const el = document.getElementById('desempenho-lista');
-  el.innerHTML = '<div class="loader"><div class="spinner"></div> Carregando...</div>';
+  const goals  = (cache.goals||[]).filter(g=>g.match_id===id);
+  const cards  = (cache.cards||[]).filter(c=>c.match_id===id);
+  const lineup = (cache.lineup||[]).filter(l=>l.match_id===id);
 
-  const [{ data: players }, { data: goals }, { data: cards }, { data: lineup }] = await Promise.all([
-    sb.from('players').select('*').eq('ativo', true).order('nome'),
-    sb.from('match_goals').select('player_id, quantidade'),
-    sb.from('match_cards').select('player_id, tipo'),
-    sb.from('match_lineup').select('player_id'),
-  ]);
+  const pName = pid => players.find(p=>p.id===pid)?.nome||'?';
 
-  el.innerHTML = (players || []).map(p => {
-    const gols    = (goals  || []).filter(g => g.player_id === p.id).reduce((s, g) => s + g.quantidade, 0);
-    const jogos   = (lineup || []).filter(l => l.player_id === p.id).length;
-    const amarelos= (cards  || []).filter(c => c.player_id === p.id && c.tipo === 'amarelo').length;
-    const vermelhos=(cards  || []).filter(c => c.player_id === p.id && c.tipo === 'vermelho').length;
-    const media   = jogos ? (gols / jogos).toFixed(1) : '0.0';
-    return `<div class="player-card" onclick="openDesempenhoDetalhe('${p.id}','${p.nome.replace(/'/g,"\\'")}')">
+  let html='<div class="detail-grid">';
+  html+='<div><div class="detail-section-title">⚽ Gols</div>';
+  html+=goals.length?goals.map(g=>`<div class="goal-row"><strong>${pName(g.player_id)}</strong><span style="margin-left:auto;color:var(--blue);font-weight:700">${g.quantidade}</span></div>`).join(''):'<div class="text-muted" style="font-size:13px">Sem registros</div>';
+  html+='</div><div><div class="detail-section-title">👕 Escalação</div>';
+  html+=lineup.length?lineup.map(l=>`<div class="goal-row">${pName(l.player_id)}</div>`).join(''):'<div class="text-muted" style="font-size:13px">Sem registros</div>';
+  html+='</div></div>';
+  if(cards.length){
+    html+='<div style="margin-top:16px"><div class="detail-section-title">🟨 Cartões</div>';
+    html+=cards.map(c=>`<div class="card-row"><span>${c.tipo==='amarelo'?'🟨':'🟥'}</span><span>${pName(c.player_id)}</span><span style="margin-left:auto;font-size:12px;color:var(--muted)">${c.tipo}</span></div>`).join('');
+    html+='</div>';
+  }
+  $('detalhe-content').innerHTML=html;
+  openModal('detalhe-modal');
+}
+
+// ── PERFIL ────────────────────────────────────────────────
+async function renderPerfil() {
+  if (!currentProfile?.player_id) {
+    $('perfil-content').innerHTML=emptyState('👤','Perfil não vinculado a um jogador.<br>Fale com o administrador.');
+    return;
+  }
+  $('perfil-content').innerHTML=loader();
+  await Promise.all([getPlayers(), getAllGoals(), getAllCards(), getAllLineup()]);
+  $('perfil-content').innerHTML = buildPlayerDetail(currentProfile.player_id, true);
+}
+
+// ── DESEMPENHO ────────────────────────────────────────────
+async function renderDesempenho() {
+  $('desempenho-lista').innerHTML=loader();
+  await Promise.all([getPlayers(), getAllGoals(), getAllCards(), getAllLineup()]);
+  const players=(cache.players||[]).filter(p=>p.ativo);
+  const goals=cache.goals||[], cards=cache.cards||[], lineup=cache.lineup||[];
+
+  $('desempenho-lista').innerHTML = players.map(p=>{
+    const gols   = goals.filter(g=>g.player_id===p.id).reduce((s,g)=>s+g.quantidade,0);
+    const jogos  = lineup.filter(l=>l.player_id===p.id).length;
+    const am     = cards.filter(c=>c.player_id===p.id&&c.tipo==='amarelo').length;
+    const vm     = cards.filter(c=>c.player_id===p.id&&c.tipo==='vermelho').length;
+    const media  = jogos?(gols/jogos).toFixed(1):'0.0';
+    return `<div class="player-card" onclick="openDesempenhoDetalhe('${p.id}')">
       <div class="player-card-avatar">${p.nome[0]}</div>
       <div class="player-card-info">
         <div class="player-card-name">${p.nome}</div>
@@ -668,226 +745,129 @@ async function loadDesempenho() {
           <span>⚽ ${gols} gols</span>
           <span>👕 ${jogos} jogos</span>
           <span>📊 ${media}/jogo</span>
-          ${amarelos ? `<span>🟨 ${amarelos}</span>` : ''}
-          ${vermelhos ? `<span>🟥 ${vermelhos}</span>` : ''}
+          ${am?`<span>🟨 ${am}</span>`:''}
+          ${vm?`<span>🟥 ${vm}</span>`:''}
         </div>
       </div>
       <div style="color:var(--muted);font-size:20px">›</div>
     </div>`;
-  }).join('') || '<div class="empty"><div class="empty-icon">👤</div><div class="empty-text">Nenhum jogador</div></div>';
+  }).join('') || emptyState('👤','Nenhum jogador ativo');
 }
 
-async function openDesempenhoDetalhe(playerId, playerNome) {
-  const el = document.getElementById('desempenho-lista');
-  el.innerHTML = '<div class="loader"><div class="spinner"></div> Carregando...</div>';
+function openDesempenhoDetalhe(playerId) {
+  $('desempenho-lista').innerHTML = buildPlayerDetail(playerId, false);
+}
 
-  const [{ data: goals }, { data: cards }, { data: lineup }] = await Promise.all([
-    sb.from('match_goals').select('quantidade, matches(data,tipo,gols_nos,gols_adv,opponents(nome))').eq('player_id', playerId),
-    sb.from('match_cards').select('tipo, matches(data,opponents(nome))').eq('player_id', playerId),
-    sb.from('match_lineup').select('match_id, matches(data,tipo,gols_nos,gols_adv,opponents(nome))').eq('player_id', playerId),
-  ]);
+function buildPlayerDetail(playerId, isOwnProfile) {
+  const players=cache.players||[], goals=cache.goals||[], cards=cache.cards||[], lineup=cache.lineup||[], matches=cache.matches||[];
+  const player=players.find(p=>p.id===playerId);
+  if(!player) return emptyState('👤','Jogador não encontrado');
 
-  const totalGols    = (goals  || []).reduce((s, g) => s + g.quantidade, 0);
-  const totalJogos   = (lineup || []).length;
-  const totalAmarelos= (cards  || []).filter(c => c.tipo === 'amarelo').length;
-  const totalVermelhos=(cards  || []).filter(c => c.tipo === 'vermelho').length;
-  const media        = totalJogos ? (totalGols / totalJogos).toFixed(2) : '0.00';
+  const myGoals  = goals.filter(g=>g.player_id===playerId);
+  const myCards  = cards.filter(c=>c.player_id===playerId);
+  const myLineup = lineup.filter(l=>l.player_id===playerId);
 
-  // Gráfico por mês
-  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  const golsPorMes = Array(12).fill(0);
-  (goals || []).forEach(g => {
-    if (g.matches?.data) {
-      const mes = new Date(g.matches.data + 'T12:00:00').getMonth();
-      golsPorMes[mes] += g.quantidade;
-    }
+  const totalGols=myGoals.reduce((s,g)=>s+g.quantidade,0);
+  const totalJogos=myLineup.length;
+  const totalAm=myCards.filter(c=>c.tipo==='amarelo').length;
+  const totalVm=myCards.filter(c=>c.tipo==='vermelho').length;
+  const media=totalJogos?(totalGols/totalJogos).toFixed(2):'0.00';
+
+  // Gráfico por mês — usando match_id para join correto
+  const meses=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const golsPorMes=Array(12).fill(0);
+  const mesesComJogo=new Set();
+  myLineup.forEach(l=>{
+    const m=matches.find(x=>x.id===l.match_id);
+    if(m) mesesComJogo.add(new Date(m.data+'T12:00:00').getMonth());
   });
-  const maxMes = Math.max(...golsPorMes, 1);
-  // Filtra meses que têm jogos
-  const mesesAtivos = lineup ? [...new Set((lineup).map(l => l.matches?.data ? new Date(l.matches.data + 'T12:00:00').getMonth() : null).filter(m => m !== null))] : [];
-  const mesesShow = meses.map((m, i) => ({ m, i, gols: golsPorMes[i] })).filter(x => mesesAtivos.includes(x.i) || x.gols > 0);
+  myGoals.forEach(g=>{
+    const m=matches.find(x=>x.id===g.match_id);
+    if(m) golsPorMes[new Date(m.data+'T12:00:00').getMonth()]+=g.quantidade;
+  });
+  const mesesShow=meses.map((n,i)=>({n,i,gols:golsPorMes[i]})).filter(x=>mesesComJogo.has(x.i)||x.gols>0);
+  const maxMes=Math.max(...mesesShow.map(x=>x.gols),1);
 
-  const grafico = mesesShow.length ? `
-    <div class="month-bars">
-      ${mesesShow.map(({ m, gols }) => `
-        <div class="month-bar-wrap">
-          <div class="month-bar-val">${gols || ''}</div>
-          <div class="month-bar" style="height:${Math.max((gols/maxMes)*64,2)}px"></div>
-          <div class="month-bar-label">${m}</div>
-        </div>`).join('')}
-    </div>` : '<div class="text-muted" style="font-size:13px">Sem dados</div>';
+  const grafico=mesesShow.length?`<div class="month-bars">${mesesShow.map(({n,gols})=>`
+    <div class="month-bar-wrap">
+      <div class="month-bar-val">${gols||''}</div>
+      <div class="month-bar" style="height:${Math.max((gols/maxMes)*64,2)}px"></div>
+      <div class="month-bar-label">${n}</div>
+    </div>`).join('')}</div>`:'<div class="text-muted" style="font-size:13px">Sem gols registrados</div>';
 
-  el.innerHTML = `
-    <button class="player-detail-back" onclick="loadDesempenho()">← Voltar</button>
+  // Tabela de jogos com join correto via match_id
+  const jogosRows=myLineup.map(l=>{
+    const m=matches.find(x=>x.id===l.match_id); if(!m) return '';
+    const res=resultado(m);
+    const g=myGoals.find(x=>x.match_id===l.match_id);
+    const c=myCards.find(x=>x.match_id===l.match_id);
+    return `<tr>
+      <td style="color:var(--muted);font-size:12px">${fmtDate(m.data)}</td>
+      <td><span class="badge-tipo ${tipoCss(m.tipo)}">${m.tipo}</span></td>
+      <td>${m.opponents?.nome||'—'}</td>
+      <td><span class="placar ${res}" style="font-size:15px">${m.gols_nos}×${m.gols_adv}</span></td>
+      <td style="color:var(--blue);font-weight:700">${g?.quantidade||0}</td>
+      <td>${c?(c.tipo==='amarelo'?'🟨':'🟥'):'—'}</td>
+    </tr>`;
+  }).join('');
+
+  const backBtn = isOwnProfile ? '' : `<button class="player-detail-back" onclick="renderDesempenho()">← Voltar</button>`;
+
+  return `${backBtn}
     <div class="profile-hero">
-      <div class="profile-avatar">${playerNome[0]}</div>
-      <div><div class="profile-name">${playerNome}</div><div class="profile-role">US MANOW · Temporada 2024</div></div>
+      <div class="profile-avatar">${player.nome[0]}</div>
+      <div><div class="profile-name">${player.nome}</div><div class="profile-role">US MANOW · Temporada 2024</div></div>
     </div>
-    <div class="profile-stats">
+    <div class="stat-grid" style="margin-bottom:16px">
       <div class="stat-card green"><div class="stat-label">Gols</div><div class="stat-value">${totalGols}</div></div>
       <div class="stat-card"><div class="stat-label">Jogos</div><div class="stat-value">${totalJogos}</div></div>
-      <div class="stat-card"><div class="stat-label">Média</div><div class="stat-value" style="font-size:28px">${media}<small style="font-size:14px">/jogo</small></div></div>
-      <div class="stat-card yellow"><div class="stat-label">🟨 Amarelos</div><div class="stat-value">${totalAmarelos}</div></div>
-      <div class="stat-card red"><div class="stat-label">🟥 Vermelhos</div><div class="stat-value">${totalVermelhos}</div></div>
+      <div class="stat-card"><div class="stat-label">Média</div><div class="stat-value" style="font-size:26px">${media}<small style="font-size:13px">/jogo</small></div></div>
+      <div class="stat-card yellow"><div class="stat-label">🟨 Amarelos</div><div class="stat-value">${totalAm}</div></div>
+      <div class="stat-card red"><div class="stat-label">🟥 Vermelhos</div><div class="stat-value">${totalVm}</div></div>
     </div>
-    <div class="card mt16">
-      <div class="card-title">Gols por mês</div>
-      <div style="margin-top:12px">${grafico}</div>
-    </div>
+    <div class="card mt16"><div class="card-title">Gols por mês</div><div style="margin-top:12px">${grafico}</div></div>
     <div class="card mt16">
       <div class="card-title">Jogos</div>
       <div class="table-wrap mt8">
-        ${lineup?.length ? `<table><thead><tr><th>Data</th><th>Tipo</th><th>Adversário</th><th>Placar</th><th>Gols</th><th>Cartão</th></tr></thead><tbody>
-          ${lineup.map(l => {
-            const m = l.matches; if (!m) return '';
-            const res = m.gols_nos > m.gols_adv ? 'win' : m.gols_nos === m.gols_adv ? 'draw' : 'loss';
-            const dt  = new Date(m.data + 'T12:00:00').toLocaleDateString('pt-BR');
-            const tc  = 'tipo-' + m.tipo.toLowerCase().split(' ')[0];
-            const g   = (goals || []).find(x => x.matches?.data === m.data && x.matches?.opponents?.nome === m.opponents?.nome);
-            const card= (cards || []).find(x => x.matches?.data === m.data && x.matches?.opponents?.nome === m.opponents?.nome);
-            return `<tr>
-              <td style="color:var(--muted);font-size:12px">${dt}</td>
-              <td><span class="badge-tipo ${tc}">${m.tipo}</span></td>
-              <td>${m.opponents?.nome || '—'}</td>
-              <td><span class="placar ${res}" style="font-size:15px">${m.gols_nos}×${m.gols_adv}</span></td>
-              <td style="color:var(--blue);font-weight:700">${g?.quantidade || 0}</td>
-              <td>${card ? (card.tipo === 'amarelo' ? '🟨' : '🟥') : '—'}</td>
-            </tr>`;
-          }).join('')}
-        </tbody></table>` : '<div class="empty" style="padding:24px"><div class="empty-text">Nenhum jogo registrado</div></div>'}
+        ${totalJogos?`<table><thead><tr><th>Data</th><th>Tipo</th><th>Adversário</th><th>Placar</th><th>Gols</th><th>Cartão</th></tr></thead><tbody>${jogosRows}</tbody></table>`:emptyState('','Nenhum jogo registrado')}
       </div>
     </div>`;
-}
-// ── PERFIL JOGADOR ───────────────────────────────────────
-async function loadPerfil() {
-  if (!currentProfile?.player_id) {
-    document.getElementById('perfil-content').innerHTML=`<div class="empty"><div class="empty-icon">👤</div><div class="empty-text">Perfil não vinculado a um jogador.<br>Fale com o administrador.</div></div>`;
-    return;
-  }
-  const pid = currentProfile.player_id;
-  const [{ data: player },{ data: goals },{ data: cards },{ data: lineup }] = await Promise.all([
-    sb.from('players').select('nome').eq('id',pid).single(),
-    sb.from('match_goals').select('quantidade, matches(data,tipo,opponents(nome))').eq('player_id',pid),
-    sb.from('match_cards').select('tipo, matches(data,opponents(nome))').eq('player_id',pid),
-    sb.from('match_lineup').select('match_id, matches(data,tipo,gols_nos,gols_adv,opponents(nome))').eq('player_id',pid),
-  ]);
-  const totalGols=goals?.reduce((s,g)=>s+g.quantidade,0)||0;
-  const totalCartoesA=cards?.filter(c=>c.tipo==='amarelo').length||0;
-  const totalCartoesV=cards?.filter(c=>c.tipo==='vermelho').length||0;
-  const totalJogos=lineup?.length||0;
-
-  document.getElementById('perfil-content').innerHTML=`
-    <div class="profile-hero">
-      <div class="profile-avatar">${player?.nome?.[0]||'?'}</div>
-      <div>
-        <div class="profile-name">${player?.nome||'Jogador'}</div>
-        <div class="profile-role">US MANOW · Temporada 2024</div>
-      </div>
-    </div>
-    <div class="profile-stats">
-      <div class="stat-card"><div class="stat-label">Jogos</div><div class="stat-value">${totalJogos}</div></div>
-      <div class="stat-card green"><div class="stat-label">Gols</div><div class="stat-value">${totalGols}</div></div>
-      <div class="stat-card yellow"><div class="stat-label">Cartões</div><div class="stat-value">${totalCartoesA}<small style="font-size:16px">🟨</small> ${totalCartoesV}<small style="font-size:16px">🟥</small></div></div>
-    </div>
-    <div class="card">
-      <div class="card-title">Jogos que participou</div>
-      <div class="table-wrap mt8">
-        ${lineup?.length ? `<table><thead><tr><th>Data</th><th>Adversário</th><th>Placar</th><th>Gols</th></tr></thead><tbody>
-          ${lineup.map(l=>{
-            const m=l.matches; if(!m) return '';
-            const res=m.gols_nos>m.gols_adv?'win':m.gols_nos===m.gols_adv?'draw':'loss';
-            const dt=new Date(m.data+'T12:00:00').toLocaleDateString('pt-BR');
-            const g=goals?.find(x=>x.matches?.data===m.data&&x.matches?.opponents?.nome===m.opponents?.nome);
-            return `<tr>
-              <td style="color:var(--muted);font-size:12px">${dt}</td>
-              <td>${m.opponents?.nome||'—'}</td>
-              <td><span class="placar ${res}" style="font-size:15px">${m.gols_nos}×${m.gols_adv}</span></td>
-              <td style="color:var(--blue);font-weight:700">${g?.quantidade||0}</td>
-            </tr>`;
-          }).join('')}
-        </tbody></table>` : '<div class="empty" style="padding:24px"><div class="empty-text">Nenhum jogo registrado</div></div>'}
-      </div>
-    </div>`;
-}
-
-// ── DETALHE JOGO ─────────────────────────────────────────
-async function openDetalhe(id) {
-  const m=allMatches.find(x=>x.id===id); if(!m) return;
-  const res=m.gols_nos>m.gols_adv?'win':m.gols_nos===m.gols_adv?'draw':'loss';
-  const dt=new Date(m.data+'T12:00:00').toLocaleDateString('pt-BR');
-  document.getElementById('detalhe-titulo').innerHTML=`US MANOW <span class="placar ${res}" style="font-size:28px"> ${m.gols_nos} × ${m.gols_adv} </span> ${m.opponents?.nome}`;
-  document.getElementById('detalhe-sub').textContent=`${dt} · ${m.tipo}${m.descricao?' · '+m.descricao:''}`;
-  const [{data:goals},{data:cards},{data:lineup}]=await Promise.all([
-    sb.from('match_goals').select('quantidade,players(nome)').eq('match_id',id),
-    sb.from('match_cards').select('tipo,players(nome)').eq('match_id',id),
-    sb.from('match_lineup').select('players(nome)').eq('match_id',id),
-  ]);
-  let html='<div class="detail-grid">';
-  html+='<div><div class="detail-section-title">⚽ Gols</div>';
-  html+=goals?.length?goals.map(g=>`<div class="goal-row"><strong>${g.players?.nome}</strong><span style="margin-left:auto;color:var(--blue);font-weight:700">${g.quantidade}</span></div>`).join(''):'<div class="text-muted" style="font-size:13px">Sem registros</div>';
-  html+='</div><div><div class="detail-section-title">👕 Escalação</div>';
-  html+=lineup?.length?lineup.map(l=>`<div class="goal-row">${l.players?.nome}</div>`).join(''):'<div class="text-muted" style="font-size:13px">Sem registros</div>';
-  html+='</div></div>';
-  if(cards?.length){
-    html+='<div style="margin-top:16px"><div class="detail-section-title">🟨 Cartões</div>';
-    html+=cards.map(c=>`<div class="card-row"><span>${c.tipo==='amarelo'?'🟨':'🟥'}</span><span>${c.players?.nome}</span><span style="margin-left:auto;font-size:12px;color:var(--muted)">${c.tipo}</span></div>`).join('');
-    html+='</div>';
-  }
-  document.getElementById('detalhe-content').innerHTML=html;
-  openModal('detalhe-modal');
 }
 
 // ── ADMIN ────────────────────────────────────────────────
-function loadAdmin() { loadAdminJogos(); loadPlayers(); }
-
-async function loadPlayers() {
-  const { data } = await sb.from('players').select('*').order('nome');
-  allPlayers=data||[];
+async function loadAdmin() {
+  await getPlayers();
+  renderAdminJogos();
 }
 
-async function checkPending() {
-  const { data } = await sb.from('profiles').select('id').eq('status','pendente');
-  const count=data?.length||0;
-  const badge=document.getElementById('pending-count');
-  if(count>0){ badge.textContent=count; badge.style.display=''; }
-  else badge.style.display='none';
-}
-
-async function loadAdminJogos() {
-  const { data } = await sb.from('matches').select('*, opponents(nome)').order('data',{ascending:false});
-  allMatches=data||[];
-  renderJogos();
-  const el=document.getElementById('admin-jogos-table');
-  if(!allMatches.length){ el.innerHTML='<div class="empty"><div class="empty-icon">⚽</div><div class="empty-text">Nenhum jogo</div></div>'; return; }
+function renderAdminJogos() {
+  const matches=cache.matches||[];
+  const el=$('admin-jogos-table');
+  if(!matches.length){ el.innerHTML=emptyState('⚽','Nenhum jogo'); return; }
   el.innerHTML=`<table><thead><tr><th>Data</th><th>Tipo</th><th>Adversário</th><th>Placar</th><th></th></tr></thead><tbody>
-    ${allMatches.map(m=>{
-      const res=m.gols_nos>m.gols_adv?'win':m.gols_nos===m.gols_adv?'draw':'loss';
-      const tc='tipo-'+m.tipo.toLowerCase().split(' ')[0];
-      const dt=new Date(m.data+'T12:00:00').toLocaleDateString('pt-BR');
-      return `<tr>
-        <td style="color:var(--muted);font-size:12px">${dt}</td>
-        <td><span class="badge-tipo ${tc}">${m.tipo}</span></td>
-        <td><strong>${m.opponents?.nome||'—'}</strong>${m.descricao?`<br><span style="font-size:11px;color:var(--muted)">${m.descricao}</span>`:''}</td>
-        <td><span class="placar ${res}">${m.gols_nos} × ${m.gols_adv}</span></td>
-        <td style="display:flex;gap:4px">
-          <button class="btn-icon" onclick="openDetalhe('${m.id}')">👁</button>
-          <button class="btn-icon" onclick="openEditJogo('${m.id}')">✏️</button>
-          <button class="btn-icon del" onclick="delJogo('${m.id}')">🗑</button>
-        </td>
-      </tr>`;
-    }).join('')}
+    ${matches.map(m=>`<tr>
+      <td style="color:var(--muted);font-size:12px">${fmtDate(m.data)}</td>
+      <td><span class="badge-tipo ${tipoCss(m.tipo)}">${m.tipo}</span></td>
+      <td><strong>${m.opponents?.nome||'—'}</strong>${m.descricao?`<br><span style="font-size:11px;color:var(--muted)">${m.descricao}</span>`:''}</td>
+      <td><span class="placar ${resultado(m)}">${m.gols_nos} × ${m.gols_adv}</span></td>
+      <td class="td-actions">
+        <button class="btn-icon" onclick="openDetalhe('${m.id}')">👁</button>
+        <button class="btn-icon" onclick="openEditJogo('${m.id}')">✏️</button>
+        <button class="btn-icon del" onclick="delJogo('${m.id}')">🗑</button>
+      </td>
+    </tr>`).join('')}
   </tbody></table>`;
 }
 
-async function loadAdminJogadores() {
-  await loadPlayers();
-  const el=document.getElementById('admin-jogadores-table');
-  if(!allPlayers.length){ el.innerHTML='<div class="empty"><div class="empty-icon">👤</div><div class="empty-text">Nenhum jogador</div></div>'; return; }
+function renderAdminJogadores() {
+  const players=cache.players||[];
+  const el=$('admin-jogadores-table');
+  if(!players.length){ el.innerHTML=emptyState('👤','Nenhum jogador'); return; }
   el.innerHTML=`<table><thead><tr><th>Nome</th><th>Status</th><th></th></tr></thead><tbody>
-    ${allPlayers.map(p=>`<tr>
+    ${players.map(p=>`<tr>
       <td>${p.nome}</td>
       <td><span class="chip">${p.ativo?'✅ Ativo':'⛔ Inativo'}</span></td>
-      <td style="display:flex;gap:4px">
+      <td class="td-actions">
         <button class="btn-icon" onclick="openEditJogador('${p.id}','${p.nome.replace(/'/g,"\\'")}')">✏️</button>
         <button class="btn-icon del" onclick="delJogador('${p.id}')">🗑</button>
       </td>
@@ -895,80 +875,72 @@ async function loadAdminJogadores() {
   </tbody></table>`;
 }
 
+async function loadAdminJogadores() {
+  await getPlayers(true);
+  renderAdminJogadores();
+}
+
 async function loadAdminUsuarios() {
   const { data } = await sb.from('profiles').select('*').order('status').order('nome');
-  const el=document.getElementById('admin-usuarios-table');
-  if(!data?.length){ el.innerHTML='<div class="empty"><div class="empty-icon">👤</div><div class="empty-text">Nenhum usuário</div></div>'; return; }
-
+  const el=$('admin-usuarios-table');
+  if(!data?.length){ el.innerHTML=emptyState('👤','Nenhum usuário'); return; }
   const pendentes=data.filter(u=>u.status==='pendente');
   const aprovados=data.filter(u=>u.status==='aprovado');
-
   let html='<table><thead><tr><th>Nome</th><th>Status</th><th>Perfil</th><th></th></tr></thead><tbody>';
-
   if(pendentes.length){
     html+=`<tr><td colspan="4" style="padding:12px;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--red);text-transform:uppercase;background:var(--surface)">⏳ Aguardando aprovação (${pendentes.length})</td></tr>`;
     html+=pendentes.map(u=>`<tr>
-      <td><strong>${u.nome}</strong></td>
-      <td><span class="chip">⏳ Pendente</span></td>
-      <td><span class="text-muted">—</span></td>
-      <td style="display:flex;gap:4px">
+      <td><strong>${u.nome}</strong></td><td><span class="chip">⏳ Pendente</span></td><td>—</td>
+      <td class="td-actions">
         <button class="btn-approve" onclick="openAprovar('${u.user_id}','${u.nome.replace(/'/g,"\\'")}')">Aprovar</button>
         <button class="btn-icon del" onclick="rejeitarUsuario('${u.user_id}')">🗑</button>
       </td>
     </tr>`).join('');
   }
-
   if(aprovados.length){
     html+=`<tr><td colspan="4" style="padding:12px;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;background:var(--surface)">✅ Aprovados (${aprovados.length})</td></tr>`;
     html+=aprovados.map(u=>`<tr>
-      <td>${u.nome}</td>
-      <td><span class="chip">✅ Aprovado</span></td>
-      <td>
-        <select class="role-select" onchange="updateRole('${u.user_id}',this.value)" ${u.user_id===currentUser?.id?'disabled':''}>
-          <option value="jogador"     ${u.role==='jogador'?'selected':''}>Jogador</option>
-          <option value="diretor"     ${u.role==='diretor'?'selected':''}>Diretor</option>
-          <option value="super_admin" ${u.role==='super_admin'?'selected':''}>Super Admin</option>
-        </select>
-      </td>
+      <td>${u.nome}</td><td><span class="chip">✅ Aprovado</span></td>
+      <td><select class="role-select" onchange="updateRole('${u.user_id}',this.value)" ${u.user_id===currentUser?.id?'disabled':''}>
+        <option value="jogador" ${u.role==='jogador'?'selected':''}>Jogador</option>
+        <option value="diretor" ${u.role==='diretor'?'selected':''}>Diretor</option>
+        <option value="super_admin" ${u.role==='super_admin'?'selected':''}>Super Admin</option>
+      </select></td>
       <td><button class="btn-icon del" onclick="delUsuario('${u.user_id}')" ${u.user_id===currentUser?.id?'disabled':''}>🗑</button></td>
     </tr>`).join('');
   }
-
   html+='</tbody></table>';
   el.innerHTML=html;
   checkPending();
 }
 
-// ── APROVAR USUÁRIO ──────────────────────────────────────
-async function openAprovar(userId, nome) {
-  aprovandoUserId=userId;
-  document.getElementById('aprovar-nome-sub').textContent=`Definir perfil para ${nome}`;
-  // Popula select de players
-  await loadPlayers();
-  const sel=document.getElementById('aprovar-player');
-  sel.innerHTML='<option value="">— Não vincular —</option>'+allPlayers.map(p=>`<option value="${p.id}">${p.nome}</option>`).join('');
-  // Sempre mostra vinculação ao jogador (diretor também pode jogar!)
-  document.getElementById('aprovar-role').onchange=function(){};
-  document.getElementById('aprovar-player-group').style.display='';
-  document.getElementById('aprovar-player-group').style.display='';
-  document.getElementById('aprovar-role').value='jogador';
-  openModal('aprovar-modal');
+async function checkPending() {
+  const { count } = await sb.from('profiles').select('*',{count:'exact',head:true}).eq('status','pendente');
+  const badge=$('pending-count');
+  if(count>0){ badge.textContent=count; badge.style.display=''; }
+  else badge.style.display='none';
 }
 
+// ── APROVAR ───────────────────────────────────────────────
+async function openAprovar(userId, nome) {
+  aprovandoUserId=userId;
+  $('aprovar-nome-sub').textContent=`Definir perfil para ${nome}`;
+  await getPlayers();
+  $('aprovar-player').innerHTML='<option value="">— Não vincular —</option>'+(cache.players||[]).map(p=>`<option value="${p.id}">${p.nome}</option>`).join('');
+  $('aprovar-role').value='jogador';
+  openModal('aprovar-modal');
+}
 async function confirmarAprovacao() {
-  const role=document.getElementById('aprovar-role').value;
-  const player_id=document.getElementById('aprovar-player').value||null;
-  await sb.from('profiles').update({ status:'aprovado', role, player_id }).eq('user_id', aprovandoUserId);
+  const role=$('aprovar-role').value, player_id=$('aprovar-player').value||null;
+  await sb.from('profiles').update({status:'aprovado',role,player_id}).eq('user_id',aprovandoUserId);
   closeModal('aprovar-modal');
   loadAdminUsuarios();
 }
-
 async function rejeitarUsuario(userId) {
   if(!confirm('Rejeitar e excluir esta solicitação?')) return;
   await sb.from('profiles').delete().eq('user_id',userId);
   loadAdminUsuarios();
 }
-
 async function updateRole(userId, role) {
   await sb.from('profiles').update({role}).eq('user_id',userId);
 }
@@ -981,14 +953,14 @@ async function delUsuario(userId) {
 // ── JOGO FORM ────────────────────────────────────────────
 async function openNovoJogo() {
   editingJogoId=null;
-  document.getElementById('jogo-modal-title').textContent='Novo Jogo';
-  document.getElementById('jogo-data').value=new Date().toISOString().split('T')[0];
-  document.getElementById('jogo-tipo').value='Amistoso';
-  document.getElementById('jogo-descricao').value='';
-  document.getElementById('jogo-adversario').value='';
-  document.getElementById('jogo-gols-nos').value=0;
-  document.getElementById('jogo-gols-adv').value=0;
-  await loadPlayers();
+  $('jogo-modal-title').textContent='Novo Jogo';
+  $('jogo-data').value=new Date().toISOString().split('T')[0];
+  $('jogo-tipo').value='Amistoso';
+  $('jogo-descricao').value='';
+  $('jogo-adversario').value='';
+  $('jogo-gols-nos').value=0;
+  $('jogo-gols-adv').value=0;
+  await getPlayers();
   renderPlayerCheckList('jogo-players-list',[],[],'gols');
   renderPlayerCheckList('jogo-cards-list',[],[],'cards');
   showAlert('jogo-error','',false);
@@ -997,29 +969,27 @@ async function openNovoJogo() {
 
 async function openEditJogo(id) {
   editingJogoId=id;
-  const m=allMatches.find(x=>x.id===id); if(!m) return;
-  document.getElementById('jogo-modal-title').textContent='Editar Jogo';
-  document.getElementById('jogo-data').value=m.data;
-  document.getElementById('jogo-tipo').value=m.tipo;
-  document.getElementById('jogo-descricao').value=m.descricao||'';
-  document.getElementById('jogo-adversario').value=m.opponents?.nome||'';
-  document.getElementById('jogo-gols-nos').value=m.gols_nos;
-  document.getElementById('jogo-gols-adv').value=m.gols_adv;
-  await loadPlayers();
-  const [{data:goals},{data:cards},{data:lineup}]=await Promise.all([
-    sb.from('match_goals').select('player_id,quantidade').eq('match_id',id),
-    sb.from('match_cards').select('player_id,tipo').eq('match_id',id),
-    sb.from('match_lineup').select('player_id').eq('match_id',id),
-  ]);
-  renderPlayerCheckList('jogo-players-list',lineup||[],goals||[],'gols');
-  renderPlayerCheckList('jogo-cards-list',cards||[],cards||[],'cards');
+  const m=(cache.matches||[]).find(x=>x.id===id); if(!m) return;
+  $('jogo-modal-title').textContent='Editar Jogo';
+  $('jogo-data').value=m.data;
+  $('jogo-tipo').value=m.tipo;
+  $('jogo-descricao').value=m.descricao||'';
+  $('jogo-adversario').value=m.opponents?.nome||'';
+  $('jogo-gols-nos').value=m.gols_nos;
+  $('jogo-gols-adv').value=m.gols_adv;
+  await getPlayers();
+  const goals =(cache.goals||[]).filter(g=>g.match_id===id);
+  const cards =(cache.cards||[]).filter(c=>c.match_id===id);
+  const lineup=(cache.lineup||[]).filter(l=>l.match_id===id);
+  renderPlayerCheckList('jogo-players-list', lineup, goals, 'gols');
+  renderPlayerCheckList('jogo-cards-list',   cards,  cards, 'cards');
   showAlert('jogo-error','',false);
   openModal('jogo-modal');
 }
 
 function renderPlayerCheckList(containerId, checkedItems, extraData, mode) {
-  const el=document.getElementById(containerId);
-  el.innerHTML=allPlayers.map(p=>{
+  const el=$(containerId);
+  el.innerHTML=(cache.players||[]).map(p=>{
     const checked=checkedItems.some(c=>c.player_id===p.id);
     if(mode==='gols'){
       const gol=extraData.find(g=>g.player_id===p.id);
@@ -1043,46 +1013,57 @@ function renderPlayerCheckList(containerId, checkedItems, extraData, mode) {
 }
 
 async function salvarJogo() {
-  const btn=document.getElementById('btn-jogo-submit');
+  const btn=$('btn-jogo-submit');
   btn.disabled=true; btn.textContent='Salvando...';
   showAlert('jogo-error','',false);
   try {
-    const data=document.getElementById('jogo-data').value;
-    const tipo=document.getElementById('jogo-tipo').value;
-    const descricao=document.getElementById('jogo-descricao').value.trim()||null;
-    const advNome=document.getElementById('jogo-adversario').value.trim();
-    const gols_nos=parseInt(document.getElementById('jogo-gols-nos').value)||0;
-    const gols_adv=parseInt(document.getElementById('jogo-gols-adv').value)||0;
+    const data=$('jogo-data').value, tipo=$('jogo-tipo').value;
+    const descricao=$('jogo-descricao').value.trim()||null;
+    const advNome=$('jogo-adversario').value.trim();
+    const gols_nos=parseInt($('jogo-gols-nos').value)||0;
+    const gols_adv=parseInt($('jogo-gols-adv').value)||0;
     if(!data||!advNome) throw new Error('Preencha data e adversário.');
-    let {data:opp}=await sb.from('opponents').select('id').eq('nome',advNome).single();
+
+    let {data:opp,error:oe}=await sb.from('opponents').select('id').eq('nome',advNome).maybeSingle();
     if(!opp){ const {data:no}=await sb.from('opponents').insert({nome:advNome}).select('id').single(); opp=no; }
+
     let matchId=editingJogoId;
     if(editingJogoId){
       await sb.from('matches').update({data,tipo,descricao,opponent_id:opp.id,gols_nos,gols_adv}).eq('id',editingJogoId);
-      await sb.from('match_goals').delete().eq('match_id',editingJogoId);
-      await sb.from('match_cards').delete().eq('match_id',editingJogoId);
-      await sb.from('match_lineup').delete().eq('match_id',editingJogoId);
+      await Promise.all([
+        sb.from('match_goals').delete().eq('match_id',editingJogoId),
+        sb.from('match_cards').delete().eq('match_id',editingJogoId),
+        sb.from('match_lineup').delete().eq('match_id',editingJogoId),
+      ]);
     } else {
       const {data:nm}=await sb.from('matches').insert({data,tipo,descricao,opponent_id:opp.id,gols_nos,gols_adv}).select('id').single();
       matchId=nm.id;
     }
+
     const lineupRows=[],goalRows=[];
     document.querySelectorAll('#jogo-players-list input[type=checkbox]:checked').forEach(cb=>{
       const pid=cb.dataset.pid;
       lineupRows.push({match_id:matchId,player_id:pid});
-      const qtd=parseInt(document.getElementById('gols-'+pid)?.value)||0;
+      const qtd=parseInt($('gols-'+pid)?.value)||0;
       if(qtd>0) goalRows.push({match_id:matchId,player_id:pid,quantidade:qtd});
     });
-    if(lineupRows.length) await sb.from('match_lineup').insert(lineupRows);
-    if(goalRows.length)   await sb.from('match_goals').insert(goalRows);
     const cardRows=[];
     document.querySelectorAll('#jogo-cards-list input[type=checkbox]:checked').forEach(cb=>{
       const pid=cb.dataset.pid;
-      cardRows.push({match_id:matchId,player_id:pid,tipo:document.getElementById('cardtipo-'+pid)?.value||'amarelo'});
+      cardRows.push({match_id:matchId,player_id:pid,tipo:$('cardtipo-'+pid)?.value||'amarelo'});
     });
-    if(cardRows.length) await sb.from('match_cards').insert(cardRows);
+
+    await Promise.all([
+      lineupRows.length ? sb.from('match_lineup').insert(lineupRows) : null,
+      goalRows.length   ? sb.from('match_goals').insert(goalRows)    : null,
+      cardRows.length   ? sb.from('match_cards').insert(cardRows)    : null,
+    ].filter(Boolean));
+
     closeModal('jogo-modal');
-    await Promise.all([loadAdminJogos(),loadArtilharia(),loadDashboard()]);
+    // Invalida cache e recarrega tudo
+    cache.clear();
+    await loadPublicData();
+    renderAdminJogos();
   } catch(e){ showAlert('jogo-error',e.message,true); }
   finally{ btn.disabled=false; btn.textContent='Salvar'; }
 }
@@ -1090,28 +1071,26 @@ async function salvarJogo() {
 async function delJogo(id) {
   if(!confirm('Excluir este jogo?')) return;
   await sb.from('matches').delete().eq('id',id);
-  await Promise.all([loadAdminJogos(),loadDashboard(),loadArtilharia()]);
+  cache.clear();
+  await loadPublicData();
+  renderAdminJogos();
 }
 
 // ── JOGADORES ────────────────────────────────────────────
-function openNovoJogador(){ editingJogadorId=null; document.getElementById('jogador-nome').value=''; openModal('jogador-modal'); }
-function openEditJogador(id,nome){ editingJogadorId=id; document.getElementById('jogador-nome').value=nome; openModal('jogador-modal'); }
+function openNovoJogador(){ editingJogadorId=null; $('jogador-nome').value=''; openModal('jogador-modal'); }
+function openEditJogador(id,nome){ editingJogadorId=id; $('jogador-nome').value=nome; openModal('jogador-modal'); }
 async function salvarJogador(){
-  const nome=document.getElementById('jogador-nome').value.trim(); if(!nome) return;
+  const nome=$('jogador-nome').value.trim(); if(!nome) return;
   if(editingJogadorId) await sb.from('players').update({nome}).eq('id',editingJogadorId);
   else await sb.from('players').insert({nome});
-  closeModal('jogador-modal'); loadAdminJogadores();
+  closeModal('jogador-modal');
+  await loadAdminJogadores();
 }
 async function delJogador(id){
   if(!confirm('Excluir jogador?')) return;
-  await sb.from('players').delete().eq('id',id); loadAdminJogadores();
+  await sb.from('players').delete().eq('id',id);
+  await loadAdminJogadores();
 }
-
-// ── HELPERS ──────────────────────────────────────────────
-function openModal(id){ document.getElementById(id).classList.add('open'); }
-function closeModal(id){ document.getElementById(id).classList.remove('open'); }
-function showAlert(id,msg,show){ const el=document.getElementById(id); if(!el) return; el.textContent=msg; el.classList.toggle('show',show); }
-document.querySelectorAll('.modal-overlay').forEach(o=>{ o.addEventListener('click',e=>{ if(e.target===o) o.classList.remove('open'); }); });
 
 init();
 </script>
